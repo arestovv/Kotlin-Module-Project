@@ -46,7 +46,7 @@ class InputHelper {
             PrintHelper.printMessage(infoMessage)
             var name = scanner.next()
 
-            while (name.isEmpty()) {
+            while (name.trim().isEmpty()) {
                 PrintHelper.printMessage(errorMessage)
                 name = scanner.next()
             }
