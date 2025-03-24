@@ -3,9 +3,9 @@ package app.screens
 import app.data.Archive
 import app.utils.InputHelper
 
-class CreateArchiveScreen: BaseScreen(){
+class CreateArchiveScreen {
 
-    fun create(): Archive{
+    fun show(): Archive {
         val name = InputHelper.getInputName()
         return Archive(name)
     }

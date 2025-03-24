@@ -20,7 +20,7 @@ class InputHelper {
             while (true) {
                 if (scanner.hasNextInt()) {
                     val input = scanner.nextInt()
-                    if (input >= 0 && input <= (items.size - 2)) {
+                    if (input >= 0 && input <= (items.size - 1)) {
                         return input
                     } else {
                         PrintHelper.printMessage(MESSAGE_NUMBER_NOT_FOUND)
@@ -43,11 +43,11 @@ class InputHelper {
         }
 
         private fun getInput(infoMessage: String, errorMessage: String): String {
-            println(infoMessage)
+            PrintHelper.printMessage(infoMessage)
             var name = scanner.next()
 
             while (name.isEmpty()) {
-                println(errorMessage)
+                PrintHelper.printMessage(errorMessage)
                 name = scanner.next()
             }
             return name

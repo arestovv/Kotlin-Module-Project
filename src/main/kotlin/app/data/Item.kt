@@ -1,5 +1,3 @@
 package app.data
 
-class Item(val name: String) {
-
-}
+class Item(val name: String)

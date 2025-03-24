@@ -5,8 +5,7 @@ import app.data.Item
 class ActionHelper {
 
     companion object {
-
-        fun choseNumberAction(itemsList: ArrayList<Item>): Int {
+        fun getNumber(itemsList: ArrayList<Item>): Int {
             var num: Int = -1
             while (num == -1) {
                 PrintHelper.printItems(itemsList)

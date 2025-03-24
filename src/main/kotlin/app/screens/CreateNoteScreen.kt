@@ -3,9 +3,9 @@ package app.screens
 import app.data.Note
 import app.utils.InputHelper
 
-class CreateNoteScreen: BaseScreen() {
+class CreateNoteScreen() {
 
-    fun create(): Note {
+    fun show(): Note {
         val name = InputHelper.getInputName()
         val text = InputHelper.getInputText()
         return Note(name, text)

@@ -2,41 +2,25 @@ package app.screens
 
 import app.data.Archive
 import app.data.Item
-import app.utils.ActionHelper
 
 class ChoseArchiveScreen : BaseScreen() {
-    private val choseNoteScreen = ChoseNoteScreen()
-    private val createArchiveScreen = CreateArchiveScreen()
     private val archiveList = ArrayList<Archive>()
 
-    fun show() {
-        updateListItems()
-
-        val createItem = 0
-        val exitItem = itemsList.size - 2
-        when (val num = ActionHelper.choseNumberAction(itemsList)) {
-            createItem -> createItem()
-            exitItem -> exit()
-            else -> openItem(num)
-        }
-    }
-
-    private fun createItem() {
-        val archive = createArchiveScreen.create()
+    override fun create() {
+        val archive = CreateArchiveScreen().show()
         archiveList.add(archive)
         show()
     }
 
-    private fun openItem(num: Int) {
+    override fun open(num: Int) {
         val parent = archiveList[num - 1]
-        choseNoteScreen.show(parent)
+        ChoseNoteScreen(parent).show()
         show()
     }
 
-    private fun updateListItems() {
+    override fun updateItems() {
         itemsList.clear()
-        itemsList.add(Item(ITEM_LIST_ARCHIVE))
-        itemsList.add(Item(ITEM_CREATE_ARCHIVE))
+        itemsList.add(Item(ITEM_FIRST_ARCHIVE))
         for ((index, item) in archiveList.withIndex()) {
             itemsList.add(Item("${index + 1}. ${item.name}"))
         }
@@ -44,8 +28,7 @@ class ChoseArchiveScreen : BaseScreen() {
     }
 
     companion object {
-        private const val  ITEM_LIST_ARCHIVE = "Список архивов:"
-        private const val  ITEM_CREATE_ARCHIVE = "0. Создать архив"
-        private const val  ITEM_EXIT = ". Выход"
+        private const val ITEM_FIRST_ARCHIVE = "Список архивов:\n0. Создать архив"
+        private const val ITEM_EXIT = ". Выход"
     }
 }
